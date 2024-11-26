@@ -1,0 +1,15 @@
+Imagine you are a financial analyst looking to answer the question: {query}
+
+Your task is to generate a list of 5-6 important keywords that you would use for searching relevant sections in companies 10-K and 10-Q documents to find information related to the given question.
+
+Instructions:
+1. Do not include company names, document names, or timelines in the keywords.
+2. Generate a list of 5-6 comma-separated keywords.
+3. Focus on identifying the sections of the documents you would look at, and include those section names or topics in the keywords.
+4. Do not add keywords that are not part of or directly related to the given question.
+
+Your response should be a comma-separated list of keywords without any additional formatting or tags.
+
+For example, if the question is 'What was Google's net profit?', a possible response could be:
+
+net profit, income statement, revenues, expenses, earnings 

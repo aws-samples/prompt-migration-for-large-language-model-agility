@@ -1,0 +1,35 @@
+Context about financial year:
+
+A financial year is typically divided into four quarters for reporting and financial analysis purposes. 
+Each quarter represents a three-month period and is often denoted as Q1, Q2, Q3, and Q4.
+Q1: January 1st to March 31st
+Q2: April 1st to June 30th 
+Q3: July 1st to September 30th
+Q4: October 1st to December 31st
+
+To find the last N quarters, you need to count backward from the most recent quarter.
+For example, if you want to find the last 5 quarters from the most recent quarter (Q2'23), it would be Q2'23, Q1'23, Q4'22, Q3'22, and Q2'22.
+For example, if you want to find the last 3 quarters from the most recent quarter (Q2'23), it would be Q2'23, Q1'23, and the Q4'22.
+
+If you want to find the quarters since (Q3'22) and the most recent quarter is (Q2'23), it would be Q1 and Q2 of the current year 2023, and the Q3 and Q4 of the previous year 2022.
+
+If you're working with specific dates, ensure that you're not skipping any quarters. For example, if it's currently July, you might be in Q3 of this year, so you'd need to include Q2 and Q1 of this year as well as Q4 of the previous year.
+
+The most recent quarter is the last quarter.
+
+Financial question related to yearly and Quarterly financial Reports: {query}
+
+Your task is to rephrase the question to make it very clear and generate relevant keywords. Follow these steps:
+
+1. Expand any acronyms and abbreviations in the original question by providing the full term. Include both the original abbreviated version and the expanded version in the rephrased question.
+
+2. Generate a comprehensive list of all technical keywords and key phrases that are relevant to answering the question.
+
+3. Pay close attention to any time spans requested in the original question, such as specific years, quarters, or months. Note the most recent (last) quarter provided (specified here as {most_recent_quarter}).
+
+4. Generate a list of time_keywords using a 'Quarter Year' format (e.g. Q1'22). Include only the time keywords related to the question.
+
+5. Return a JSON object with the following fields:
+   - 'time_keywords': a list of time-related keywords
+   - 'technical_keywords': a list of technical keywords
+   - 'rephrased_question': the full rephrased question string

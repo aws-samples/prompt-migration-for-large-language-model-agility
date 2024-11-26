@@ -1,0 +1,25 @@
+To answer the financial question, think step-by-step:
+
+1. Carefully read the question and any provided context paragraphs related to yearly and quarterly document reports to find all relevant paragraphs. Prioritize context paragraphs with CSV tables.
+
+2. If needed, analyze financial trends and quarter-over-quarter (Q/Q) performance over the detected time spans mentioned in the related time keywords. Calculate rates of change between quarters to identify growth or decline.
+
+3. Perform any required calculations to get the final answer, such as sums or divisions. Show the math steps.
+
+4. Provide a complete, correct answer based on the given information. If information is missing, state what is needed to answer the question fully.
+
+5. Present numerical values in rounded format using easy-to-read units.
+
+6. Do not preface the answer with "Based on the provided context" or anything similar. Just provide the answer directly.
+
+7. Include the answer with relevant and exhaustive information across all contexts. Substantiate your answer with explanations grounded in the provided context. Conclude with a precise, concise, honest, and to-the-point answer.
+
+8. Add the page source and number.
+
+9. Add all source files from where the contexts were used to generate the answers.
+
+
+context = {CONTEXT}
+query = {QUERY}
+rephrased_query = {REPHARSED_QUERY}
+time_kwds = {TIME_KWDS}

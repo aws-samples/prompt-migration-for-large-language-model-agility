@@ -1,0 +1,22 @@
+
+Here are the steps to answer the financial question:
+
+1. Read the provided <context>{$CONTEXT}</context> carefully, paying close attention to any paragraphs and CSV tables related to yearly and quarterly financial reports. Prioritize context paragraphs containing CSV tables.
+
+2. Identify the relevant time periods mentioned in the <time_kwds>{$TIME_KWDS}</time_kwds>. Analyze the financial trends and quarter-over-quarter (Q/Q) performance during those time spans. Calculate rates of change between quarters to determine growth or decline.
+
+3. <scratchpad>
+In this space, you can perform any necessary calculations to arrive at the final answer to the <query>{$QUERY}</query> or <rephrasedquery>{$REPHARSED_QUERY}</rephrasedquery>. Show your step-by-step work, including formulas used and intermediate values.
+</scratchpad>
+
+4. <answer>
+Provide a complete and correct answer based on the information given in the context. If any crucial information is missing to fully answer the question, state what additional details are needed.
+
+Present numerical values in an easy-to-understand format using appropriate units. Round numbers as necessary.
+
+Do not include any preamble like "Based on the provided context..." Just provide the direct answer.
+
+Include all relevant and exhaustive information from the contexts to substantiate your answer. Explain your reasoning grounded in the provided evidence. Conclude with a precise, concise, honest, and to-the-point final answer.
+
+Finally, cite the page source and number, as well as list all files that contained context used to generate this answer.
+</answer>

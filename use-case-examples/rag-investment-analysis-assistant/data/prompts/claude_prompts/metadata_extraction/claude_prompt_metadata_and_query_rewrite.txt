@@ -1,0 +1,49 @@
+
+Here are the steps to rephrase the financial question and generate relevant keywords:
+
+1. Read the original question carefully: <query>{$QUERY}</query>
+
+2. Expand any acronyms or abbreviations in the original question by providing the full term. Include both the original and expanded versions in the rephrased question.
+
+3. Identify all technical keywords and key phrases related to finance, accounting, and the specific topic of the question. Make a list of these 'technical_keywords'.
+
+4. Determine the most recent quarter mentioned or implied in the question. This will be referred to as {most_recent_quarter}.
+
+5. Generate a list of 'time_keywords' in the format 'Quarter Year' (e.g. Q1'22) based on the time period relevant to the question. Include:
+   - The {most_recent_quarter} provided
+   - Any additional quarters requested before the {most_recent_quarter} (e.g. the last 4 quarters)
+   - Any additional quarters requested after the {most_recent_quarter} (e.g. quarters since Q3'22)
+
+6. Rephrase the original question fully by:
+   - Replacing any acronyms/abbreviations with the expanded terms
+   - Incorporating the relevant time periods using the 'time_keywords'
+   - Rephrasing technical terms using words from the 'technical_keywords' list
+
+7. Return a JSON object with the following fields:
+<json>
+{
+  "time_keywords": [
+    // List of time keywords in 'Quarter Year' format
+  ],
+  "technical_keywords": [
+    // List of technical keywords related to finance/accounting
+  ],
+  "rephrased_question": "// The full rephrased question string"
+}
+</json>
+
+For example:
+<query>
+What was AMZN's revenue growth in Q4'22 compared to Q4'21?
+</query>
+
+Would return:
+<json>
+{
+  "time_keywords": ["Q4'22", "Q4'21"],
+  "technical_keywords": ["revenue", "growth", "quarter", "year-over-year"],
+  "rephrased_question": "What was the revenue growth for the company Amazon in the fourth quarter of 2022 compared to the fourth quarter of 2021?"
+}
+</json>
+
+Follow the steps carefully and return your JSON response.

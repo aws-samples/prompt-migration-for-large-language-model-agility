@@ -1,0 +1,32 @@
+﻿prompt_id,prompt_text
+raw,"Answer the question below, by obtaining the {FIELD} from following call transcript of a call between a customer and a customer agent on a specific issue. 
+If you cannot answer the question, reply with 'n/a'. Use gender neutral pronouns.
+When you reply, do not use XML tags in the answer. Respond with the answer and a 1-2 sentence explanation. 
+
+Question: {QUESTION}
+
+Transcript:
+{TRANSCRIPT}
+
+Answer in the following way: 
+Answer: <your answer to the question>
+Step by Step Reason: <corresponding reason>"
+optimized,"You will be answering a question by obtaining information from a transcript of a call between a customer and a customer service agent. Here are the steps:
+
+1. Read the provided transcript carefully:
+<transcript>
+{TRANSCRIPT}
+</transcript>
+
+2. Identify the {FIELD} from the transcript that is relevant to answering the question: ""{QUESTION}""
+
+3. Provide your answer and reasoning in the following format:
+
+Answer: <your answer to the question>
+Step by Step Reason: <explain how you arrived at your answer by referencing relevant parts of the transcript>
+
+If you cannot determine an answer from the transcript, simply respond with:
+Answer: n/a
+Step by Step Reason: The transcript does not contain enough information to answer the question.
+
+Do not use any XML tags in your response besides the formatting shown above. Use gender neutral pronouns when referring to people mentioned in the transcript."

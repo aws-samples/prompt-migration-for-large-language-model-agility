@@ -1,0 +1,24 @@
+##SAMPLE CONFIGS IF USING CONFIG FILES INSTEAD OF CONFIG WITHIN NOTEBOOK
+type_rets: ["fusion"] # embb or text or fusion
+type_qt: null # qw or hyde or None
+rephrase_llm_model: "anthropic.claude-3-haiku-20240307-v1:0" # choose between "anthropic.claude-v2", "anthropic.claude-v1", "anthropic.claude-instant-v1"
+generation_llm_model: "gpt-3.5-turbo" # choose between "anthropic.claude-v2", "anthropic.claude-v1", "anthropic.claude-instant-v1", "anthropic.claude-3-haiku-20240307-v1:0"
+index_name_embb: 'test_index_name2' 
+index_name_text: 'test_index_name2'
+top_k_rankings: [5]
+top_k_retrieval: 20
+llm_qt: null
+# Can be true or false
+use_query_rewriting: False
+use_hyde: False
+use_text: False
+use_embedding: False
+use_rephrased_query: True
+use_company_kwds: False
+use_kw_reranker: True
+use_bge_reranker: False
+use_dynamic_ret: False
+use_doc_types: [False]
+use_map_reduce: False
+use_streaming: False
+emb_name: 'vector_field'

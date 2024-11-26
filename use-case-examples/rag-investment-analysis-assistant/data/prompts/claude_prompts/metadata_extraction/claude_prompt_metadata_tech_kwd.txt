@@ -1,0 +1,19 @@
+
+Your task is to generate a list of 5-6 important keywords that a financial analyst would use to search for relevant information in companies' 10-K and 10-Q filings to answer the following question:
+
+{$QUERY}
+
+For example, if the question was "What was Google's net profit?", a good set of keywords would be:
+
+net profit, income statement, revenues, expenses, earnings
+
+To generate the keywords, follow these instructions:
+
+1. Read the given question carefully and identify the key topics or areas of focus.
+2. Think about the sections in 10-K and 10-Q filings where information related to those topics would be discussed.
+3. Create a list of 5-6 comma-separated keywords based on the section names or topics you identified, without including any company names, document names, or timelines.
+4. Ensure the keywords directly relate to answering the given question and do not include irrelevant or overly broad terms.
+
+Write your list of keywords inside <keywords> tags, like this:
+
+<keywords>keyword1, keyword2, keyword3, keyword4, keyword5, keyword6</keywords>
