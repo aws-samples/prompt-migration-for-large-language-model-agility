@@ -1,4 +1,13 @@
-from ragas.llms.base import BaseRagasLLM, LangchainLLM, llm_factory
-from ragas.llms.llamaindex import LlamaIndexLLM
+from ragas.llms.base import (
+    BaseRagasLLM,
+    LangchainLLMWrapper,
+    LlamaIndexLLMWrapper,
+    llm_factory,
+)
 
-__all__ = ["BaseRagasLLM", "LangchainLLM", "LlamaIndexLLM", "llm_factory"]
+__all__ = [
+    "BaseRagasLLM",
+    "LangchainLLMWrapper",
+    "LlamaIndexLLMWrapper",
+    "llm_factory",
+]

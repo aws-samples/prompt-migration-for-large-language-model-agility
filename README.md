@@ -110,14 +110,14 @@ Click on the use-case-examples and choose the use case you would like to start e
 
 ## Resources and References
 
-* [In-house RAGAS evaluation package with BedRock](https://gitlab.aws.dev/genaiic-reusable-assets/engagement-artifacts/ragas-evaluation/-/tree/main?ref_type=heads) 
+* [In-house RAGAS evaluation package with BedRock](https://github.com/aws-samples/prompt-migration-for-large-language-model-agility/tree/main/use-case-examples/rag-investment-analysis-assistant/libraries/ragas-evaluation) 
 * [Official RAGAS pacakge](https://github.com/explodinggradients/ragas)
 * [Anthropic metaprompt method](https://docs.anthropic.com/en/docs/helper-metaprompt-experimental) 
 * [Anthropic documentation for Claude models](https://docs.anthropic.com/en/docs/intro-to-claude)
 
 
 ## Support
-longchn@amazon.com, aviyadc@amazon.com, uelaine@amazon.com, aminikha@amazon.com, fccal@amazon.com, ravividy@amazon.com
+longchn@amazon.com, aviyadc@amazon.com, uelaine@amazon.com, aminikha@amazon.com, fccal@amazon.com, gunsuren@amazon.com, ravividy@amazon.com
 
 
 ## Contributing

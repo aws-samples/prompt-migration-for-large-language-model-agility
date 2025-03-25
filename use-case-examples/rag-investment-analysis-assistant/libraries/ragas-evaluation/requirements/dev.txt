@@ -6,3 +6,13 @@ pyright
 llama_index
 notebook
 sphinx-autobuild
+sentence-transformers
+transformers
+fastembed
+graphene
+rouge_score
+sacrebleu
+nltk
+rapidfuzz
+pandas
+datacompy

@@ -1,59 +1,89 @@
 """Async utils."""
+
 import asyncio
-from itertools import zip_longest
-from typing import Any, Coroutine, Iterable, List
+from typing import Any, Coroutine, List, Optional
+
+from tqdm.auto import tqdm
+
+from ragas.executor import is_event_loop_running
+from ragas.utils import batched
 
 
 def run_async_tasks(
     tasks: List[Coroutine],
-    show_progress: bool = False,
+    batch_size: Optional[int] = None,
+    show_progress: bool = True,
     progress_bar_desc: str = "Running async tasks",
 ) -> List[Any]:
-    """Run a list of async tasks."""
+    """
+    Execute async tasks with optional batching and progress tracking.
 
-    tasks_to_execute: List[Any] = tasks
-    if show_progress:
+    NOTE: Order of results is not guaranteed!
+
+    Args:
+        tasks: List of coroutines to execute
+        batch_size: Optional size for batching tasks. If None, runs all concurrently
+        show_progress: Whether to display progress bars
+    """
+
+    async def _run():
+        total_tasks = len(tasks)
+        results = []
+
+        # If no batching, run all tasks concurrently with single progress bar
+        if not batch_size:
+            with tqdm(
+                total=total_tasks,
+                desc=progress_bar_desc,
+                disable=not show_progress,
+            ) as pbar:
+                for future in asyncio.as_completed(tasks):
+                    result = await future
+                    results.append(result)
+                    pbar.update(1)
+            return results
+
+        # With batching, show nested progress bars
+        batches = batched(tasks, batch_size)  # generator
+        n_batches = (total_tasks + batch_size - 1) // batch_size
+        with (
+            tqdm(
+                total=total_tasks,
+                desc=progress_bar_desc,
+                disable=not show_progress,
+                position=0,
+                leave=True,
+            ) as overall_pbar,
+            tqdm(
+                total=batch_size,
+                desc=f"Batch 1/{n_batches}",
+                disable=not show_progress,
+                position=1,
+                leave=False,
+            ) as batch_pbar,
+        ):
+            for i, batch in enumerate(batches, 1):
+                batch_pbar.reset(total=len(batch))
+                batch_pbar.set_description(f"Batch {i}/{n_batches}")
+                for future in asyncio.as_completed(batch):
+                    result = await future
+                    results.append(result)
+                    overall_pbar.update(1)
+                    batch_pbar.update(1)
+
+        return results
+
+    if is_event_loop_running():
+        # an event loop is running so call nested_asyncio to fix this
         try:
             import nest_asyncio
-            from tqdm.asyncio import tqdm
-
-            # jupyter notebooks already have an event loop running
-            # we need to reuse it instead of creating a new one
+        except ImportError:
+            raise ImportError(
+                "It seems like your running this in a jupyter-like environment. "
+                "Please install nest_asyncio with `pip install nest_asyncio` to make it work."
+            )
+        else:
             nest_asyncio.apply()
-            loop = asyncio.get_event_loop()
 
-            async def _tqdm_gather() -> List[Any]:
-                return await tqdm.gather(*tasks_to_execute, desc=progress_bar_desc)
-
-            tqdm_outputs: List[Any] = loop.run_until_complete(_tqdm_gather())
-            return tqdm_outputs
-        # run the operation w/o tqdm on hitting a fatal
-        # may occur in some environments where tqdm.asyncio
-        # is not supported
-        except ImportError as e:
-            print(e)
-        except Exception:
-            pass
-
-    async def _gather() -> List[Any]:
-        return await asyncio.gather(*tasks_to_execute)
-
-    outputs: List[Any] = asyncio.run(_gather())
-    return outputs
-
-
-def chunks(iterable: Iterable, size: int) -> Iterable:
-    args = [iter(iterable)] * size
-    return zip_longest(*args, fillvalue=None)
-
-
-async def batch_gather(
-    tasks: List[Coroutine], batch_size: int = 10, verbose: bool = False
-) -> List[Any]:
-    output: List[Any] = []
-    for task_chunk in chunks(tasks, batch_size):
-        output_chunk = await asyncio.gather(*task_chunk)
-        output.extend(output_chunk)
-        if verbose:
-            print(f"Completed {len(output)} out of {len(tasks)} tasks")
-    return output
+    results = asyncio.run(_run())
+    return results
